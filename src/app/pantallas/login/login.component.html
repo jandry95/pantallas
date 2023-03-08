@@ -1,0 +1,42 @@
+<br>
+
+<div *ngIf="loginFormClose"  class="container">
+  <div class="row">
+    <div class="card" style="background-color: rgb(153, 152, 152)">
+      <div class="row">
+
+
+        <div style="padding: 2%;" class="col-md-10">
+          <h2>Inicio Session</h2>
+        </div>
+        <div style="padding: 2%;" class="col-md-2">
+          <button class="btn btn-link" (click)="login()" ><i class="fa-solid fa-x"></i></button>
+        </div>
+      </div>
+      <form style="margin: 5%;" [formGroup]="loginForm" (ngSubmit)="pass()">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group" style="text-align:start;">
+              <label for="">Correo Electronico</label>
+              <input type="email" class="form-control text-end"   placeholder="Email" formControlName="email">
+
+            </div>
+
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group" style="text-align:start;">
+              <label for="">Contraseña</label>
+              <input type="password" class="form-control text-end"   placeholder="Contraseña" formControlName="password">
+
+            </div>
+
+          </div>
+
+        </div>
+        <br>
+        <button type="submit"    class="btn btn-success btn-lg btn-block "> Ingresar </button>
+      </form>
+    </div>
+  </div>
+</div>

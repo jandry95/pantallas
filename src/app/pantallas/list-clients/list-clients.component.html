@@ -1,0 +1,78 @@
+<app-menu></app-menu>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Lista de Clientes</h1>
+    </div>
+    <div class="col-md-6">
+
+     <app-create-clients></app-create-clients>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+
+      <div *ngIf="spinner" class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+      </div>
+
+
+        <div style="padding:5%">
+          <table class="table table-hover" >
+            <thead style="background-color: rgb(41, 54, 83);">
+              <!-- <thead class="thead-light"> -->
+              <tr>
+                <th class="text-center" style="color: white;" scope="col">#</th>
+                <th class="text-center" style="color: white;" scope="col">CLIENTE</th>
+                <th class="text-center" style="color: white;" scope="col">CEDULA</th>
+                <th class="text-center" style="color: white;" scope="col">TELEFONO</th>
+                <th class="text-center" style="color: white;" scope="col">DIRECCION</th>
+
+                <th class="text-center" style="color: white;" colspan=3></th>
+              </tr>
+            </thead>
+
+
+
+            <tbody style="background-color: white;">
+              <tr  *ngFor="let item of clients| paginate: { itemsPerPage: 5, currentPage: page }">
+                <th scope="row">{{ item.id }}</th>
+                <td class="text-center" >{{ item.name }} {{ item.lastName }}</td>
+                <td class="text-center" >{{ item.ci }}</td>
+                <td class="text-center" >{{ item.phone }}</td>
+                <td class="text-center" >{{ item.address }}</td>
+
+                <!-- <td>
+                  <a class="btn btn-danger" href="">Eliminar</a>
+                </td> -->
+                <td>
+                  <a class="btn btn-warning" (click)="selectClients(item.id)"  >Editar</a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+          <pagination-controls (pageChange)="page = $event"
+          previousLabel="Previous"
+          nextLabel="Next"
+
+          ></pagination-controls>
+
+    </div>
+
+    <div class="col-md-2">
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<app-menu></app-menu>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Actualizar Cliente</h1>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <form style="margin: 5%;">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group" style="text-align:start;">
+                <label for="">Nombres</label>
+                <input type="text" class="form-control"  required
+                 placeholder="Nombre de la Categoria"  [ngModelOptions]="{standalone: true}" [(ngModel)]="clients.name">
+
+              </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group" style="text-align:start;">
+                  <label for="">Apellidos</label>
+                  <input type="text" class="form-control"  required
+                   placeholder="Nombre de la Categoria"  [ngModelOptions]="{standalone: true}" [(ngModel)]="clients.lastName">
+
+                </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group" style="text-align:start;">
+                    <label for="">Cedula de Identidad</label>
+                    <!-- <input type="text" class="form-control"  required
+                     placeholder="Nombre de la Categoria"  [ngModelOptions]="{standalone: true}" [(ngModel)]="clients.ci"> -->
+                     <input type="text" value=""
+                      class="form-control"
+                      placeholder="Ingrese su Cedula"
+                       [(ngModel)]="clients.ci" [ngModelOptions]="{standalone: true}"  (change)="validadorDeCedula(ci)" maxlength="10">
+                      <small *ngIf="!validador" class="text-danger">Cedula Invalida</small>
+                  </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group" style="text-align:start;">
+                      <label for="">Direccion</label>
+                      <input type="text" class="form-control"  required
+                       placeholder="Nombre de la Categoria"  [ngModelOptions]="{standalone: true}" [(ngModel)]="clients.address">
+
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group" style="text-align:start;">
+                        <label for="">Telefono</label>
+                        <input type="text" class="form-control"  required
+                         placeholder="Nombre de la Categoria"   [ngModelOptions]="{standalone: true}" [(ngModel)]="clients.phone">
+
+                      </div>
+                      </div>
+            </div>
+
+
+
+          <br>
+          <button type="submit" class="btn btn-outline-warning btn-lg btn-block "  (click)="updateClientes()" > Actualizar </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+  </div>
+</div>

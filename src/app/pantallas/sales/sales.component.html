@@ -1,0 +1,69 @@
+
+
+
+<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target=".bd-example2-modal-lg"><i class="fa-solid fa-cart-shopping"></i> Salida de Productos</button>
+
+<div class="modal fade bd-example2-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lista de Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div style="padding:5%">
+            <table class="table table-hover" >
+              <thead style="background-color: rgb(41, 54, 83);">
+                <!-- <thead class="thead-light"> -->
+                <tr>
+                  <th class="text-center" style="color: white;" scope="col">#</th>
+                  <th class="text-center" style="color: white;" scope="col">Categorias</th>
+                  <th class="text-center" style="color: white;" scope="col">Nombre del Producto</th>
+                  <th class="text-center" style="color: white;" scope="col">Unidades Disponibles</th>
+                  <th class="text-center" style="color: white;" scope="col">Descripcion del Producto</th>
+                  <th class="text-center" style="color: white;" colspan=3></th>
+                </tr>
+              </thead>
+
+
+
+              <tbody style="background-color: white;">
+
+                <tr  *ngFor="let item of products  | paginate: { itemsPerPage: 5, currentPage: page }">
+                  <th scope="row">{{ item.id }}</th>
+                  <td class="text-center" >{{ item.categoriesName }}</td>
+                  <td class="text-center" >{{ item.productsName }}</td>
+                  <td class="text-center">{{ item.productsStock }}</td>
+                  <td class="text-center">{{ item.productsDescription }}</td>
+
+                 <td>
+                    <button class="btn btn-danger"  data-dismiss="modal" (click)="selectProduct(item.id)" >Vender</button>
+                  </td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center">
+            <pagination-controls (pageChange)="page = $event"
+            previousLabel="Previous"
+            nextLabel="Next"
+
+            ></pagination-controls>
+          </div>
+
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+

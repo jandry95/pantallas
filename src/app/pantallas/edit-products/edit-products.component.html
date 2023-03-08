@@ -1,0 +1,73 @@
+<app-menu></app-menu>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Editar Producto</h2>
+      </div>
+      <div class="col-md-6">
+
+      </div>
+    </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <br>
+
+        <div style="margin: 5%;">
+          <div class="row" >
+            <div class="col-md-12">
+              <div class="form-group" style="text-align:start;">
+                <label for="">Nombre del Producto</label>
+                <input type="text" class="form-control text-end"   placeholder="Nombre del Producto" [ngModelOptions]="{standalone: true}" [(ngModel)]="products.productsName">
+
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" style="text-align:start;">
+                <label for="">Categoria</label>
+                <select class="custom-select" id="inputGroupSelect01" [ngModelOptions]="{standalone: true}" [(ngModel)]="products.category_id">
+
+                  <option class=" form-control " *ngFor="let data of categories"  value="{{ data.id }}"> {{
+                    data.categoriesName }}</option>
+                </select>
+
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" style="text-align:start;">
+                <label for="">Cantidad </label>
+                <input type="number" class="form-control "   placeholder="Cantidad de Productos" [ngModelOptions]="{standalone: true}" [(ngModel)]="products.productsStock">
+
+              </div>
+
+            </div>
+            <div class="col-md-12">
+              <div class="form-group" style="text-align:start;">
+                <label for="">Detalle del Producto</label>
+                <textarea class="form-control" name="" id="" cols="10" rows="5" [ngModelOptions]="{standalone: true}" [(ngModel)]="products.productsDescription"></textarea>
+
+              </div>
+
+            </div>
+          </div>
+          <br>
+          <button (click)="updateProduct()" type="submit" class="btn btn-outline-warning btn-lg btn-block "> Actualizar </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+
+  </div>
+</div>

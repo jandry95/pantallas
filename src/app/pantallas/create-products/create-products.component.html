@@ -1,0 +1,68 @@
+<button data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-primary"><i class="fas fa-plus" ></i> Crear Producto </button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+
+            <form [formGroup]="productForm" (ngSubmit)="createProduct()">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group" style="text-align:start;">
+                    <label for="">Nombre del Producto</label>
+                    <input type="text" class="form-control text-end"   placeholder="Nombre del Producto" formControlName="productsName">
+
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" style="text-align:start;">
+                    <label for="">Categoria</label>
+                    <select class="custom-select" id="inputGroupSelect01" formControlName="category_id">
+
+                      <option class=" form-control " *ngFor="let data of categories"  value="{{ data.id }}"> {{
+                        data.categoriesName }}</option>
+                    </select>
+
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" style="text-align:start;">
+                    <label for="">Cantidad </label>
+                    <input type="number" class="form-control "   placeholder="Cantidad de Productos" formControlName="productsStock">
+
+                  </div>
+
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group" style="text-align:start;">
+                    <label for="">Detalle del Producto</label>
+                    <textarea class="form-control" name="" id="" cols="10" rows="5" formControlName="productsDescription"></textarea>
+
+                  </div>
+
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-outline-success btn-lg btn-block "> Crear </button>
+            </form>
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>

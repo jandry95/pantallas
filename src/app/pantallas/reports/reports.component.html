@@ -1,0 +1,65 @@
+
+
+<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa-solid fa-list"></i> Lista de Ingresos</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lista de Entrada de Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div style="padding:5%">
+            <table class="table table-hover" >
+              <thead style="background-color: rgb(41, 54, 83);">
+                <!-- <thead class="thead-light"> -->
+                <tr>
+                  <th class="text-center" style="color: white;" scope="col">#</th>
+
+                  <th class="text-center" style="color: white;" scope="col">Nombre del Producto</th>
+                  <th class="text-center" style="color: white;" scope="col">Unidades Disponibles</th>
+
+                  <th class="text-center" style="color: white;" colspan=3>FECHA</th>
+                </tr>
+              </thead>
+
+
+
+              <tbody style="background-color: white;">
+
+                <tr  *ngFor="let item of reports  | paginate: { itemsPerPage: 5, currentPage: page }">
+                  <th scope="row">{{ item.id }}</th>
+
+                  <td class="text-center" >{{ item.productsName }}</td>
+                  <td class="text-center">{{ item.productsStock }}</td>
+                  <td class="text-center">{{ item.created_at | date:'dd-MM-yyyy' }}</td>
+
+                  <!-- <td>
+                    <button class="btn btn-danger"  (click)="deleteProduct(item.id)" >Eliminar</button>
+                  </td>
+                  <td>
+                    <button class="btn btn-warning"  (click)="selectProduct(item.id)" >Editar</button>
+                  </td> -->
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center">
+            <pagination-controls (pageChange)="page = $event"
+            previousLabel="Previous"
+            nextLabel="Next"
+
+            ></pagination-controls>
+          </div>
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,99 @@
+<button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Crear Cliente <i class="fas fa-plus" ></i></button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+
+             <form [formGroup]="clientsForm" (ngSubmit)="createCliente();">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" style="text-align:start;">
+                    <label for="">Nombres</label>
+                    <input type="text" class="form-control"  required
+                     placeholder="Ingrese su Nombre" formControlName="name" name="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" >
+                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Este campo es obligatorio</div>
+                  </div>
+                  </div>
+                </div>
+                  <div class="col-md-6">
+                    <div class="form-group" style="text-align:start;">
+                      <label for="">Apellidos</label>
+                      <input type="text" class="form-control"  required
+                       placeholder="Nombre de la Apellido" formControlName="lastName" name="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" >
+                       <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Este campo es obligatorio</div>
+                    </div>
+                    </div>
+                  </div>
+                     <div class="col-md-6">
+                      <div class="form-group" style="text-align:start;">
+                        <label for="">Cedula de Identidad</label>
+                       <!-- <input type="text" class="form-control"  required
+                         placeholder="Nombre de la Categoria" formControlName="ci" name="ci"  [ngClass]="{ 'is-invalid': submitted && f.ci.errors }" >
+                         <div *ngIf="submitted && f.ci.errors" class="invalid-feedback">
+                          <div *ngIf="f.ci.errors.required">Revise su numero de Cedula</div>
+                      </div>
+                      </div>
+                      </div> -->
+                      <input type="text" value=""
+                      class="form-control"  required
+                      placeholder="Ingrese su Cedula"
+                      name="ci" [(ngModel)]="ci" [ngModelOptions]="{standalone: true}"   maxlength="10">
+                      <!-- <small *ngIf="!validador" class="text-danger">Cedula Invalida</small> -->
+                      </div>
+                      </div>
+
+
+
+                      <div class="col-md-6">
+                        <div class="form-group" style="text-align:start;">
+                          <label for="">Direccion</label>
+                          <input type="text" class="form-control"  required
+                           placeholder="Ingrese su Direccion" formControlName="address" name="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" >
+                           <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                            <div *ngIf="f.address.errors.required">Este campo es obligatorio</div>
+                        </div>
+                        </div>
+                      </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group" style="text-align:start;">
+                            <label for="">Telefono</label>
+                            <input type="text" class="form-control"  required
+                             placeholder="Ingrese su Telefono" formControlName="phone" name="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" >
+                             <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                              <div *ngIf="f.phone.errors.required">Este campo es obligatorio</div>
+                          </div>
+                          </div>
+                        </div>
+                </div>
+
+
+
+              <br>
+              <button type="submit" class="btn btn-outline-success btn-lg btn-block "> Crear </button>
+            </form>
+</div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+

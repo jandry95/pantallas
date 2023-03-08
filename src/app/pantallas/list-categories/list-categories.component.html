@@ -1,0 +1,73 @@
+<app-menu></app-menu>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Lista de Categorias</h1>
+    </div>
+    <div class="col-md-6">
+      <app-create-categories></app-create-categories>
+      <!-- <app-create-clients></app-create-clients> -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+
+      <div *ngIf="spinner" class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+      </div>
+
+
+        <div style="padding:5%">
+          <table class="table table-hover" >
+            <thead style="background-color: rgb(41, 54, 83);">
+              <!-- <thead class="thead-light"> -->
+              <tr>
+                <th class="text-center" style="color: white;" scope="col">#</th>
+                <th class="text-center" style="color: white;" scope="col">Categorias</th>
+                <th class="text-center" style="color: white;" scope="col">Fecha</th>
+                <th class="text-center" style="color: white;" colspan=2></th>
+              </tr>
+            </thead>
+
+
+
+            <tbody style="background-color: white;">
+
+              <tr  *ngFor="let item of categories| paginate: { itemsPerPage: 5, currentPage: page }">
+                <th scope="row">{{ item.id }}</th>
+                <td class="text-center" >{{ item.categoriesName }}</td>
+                <td class="text-center">{{ item.created_at | date:'dd-MM-yyyy' }}</td>
+                <td>
+                  <a class="btn btn-danger" (click)="deleteCategories(item.id)">Eliminar</a>
+                </td>
+                <td>
+                  <a class="btn btn-warning" (click)="selectCategories(item.id)" >Editar</a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+          <pagination-controls (pageChange)="page = $event"
+          previousLabel="Previous"
+          nextLabel="Next"
+
+          ></pagination-controls>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+
+
+  </div>
+</div>

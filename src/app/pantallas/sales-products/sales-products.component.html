@@ -1,0 +1,115 @@
+<app-menu></app-menu>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>Lista de Salida de Productos</h1>
+          </div>
+          <div class="col-md-8"  style="text-align: end;">
+
+
+          </div>
+        </div>
+
+
+      <hr style="background-color: rgb(124, 124, 124);">
+    </div>
+
+  </div>
+</div>
+<br>
+
+
+
+<div class="container" >
+  <div *ngIf="spinner" class="d-flex align-items-center">
+    <strong>Loading...</strong>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div style="padding:5%; position: relative; left: 8%;">
+        <table class="table table-hover" >
+          <thead style="background-color: rgb(41, 54, 83);">
+            <!-- <thead class="thead-light"> -->
+            <tr>
+              <th class="text-center" style="color: white;" scope="col">#</th>
+
+              <th class="text-center" style="color: white;" scope="col">Cliente</th>
+
+
+            </tr>
+          </thead>
+
+
+
+          <tbody style="background-color: white;">
+
+            <tr  *ngFor="let item of clients  | paginate: { itemsPerPage: 5, currentPage: page }">
+              <th scope="row">{{ item.id }}</th>
+
+              <td class="text-center" >{{ item.name }} {{ item.lastName }}</td>
+
+
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="position: relative; right: 4%" class="col-md-6">
+
+
+
+
+        <div style="padding:5%">
+          <table class="table table-hover" >
+            <thead style="background-color: rgb(41, 54, 83);">
+              <!-- <thead class="thead-light"> -->
+              <tr>
+
+
+                <th class="text-center" style="color: white;" scope="col">Producto</th>
+                <th class="text-center" style="color: white;" scope="col">Unidades Vendidas</th>
+                <th class="text-center" style="color: white;" scope="col">Fecha</th>
+
+              </tr>
+            </thead>
+
+
+
+            <tbody style="background-color: white;">
+
+              <tr  *ngFor="let item of sales  | paginate: { itemsPerPage: 5, currentPage: page }">
+
+
+                <td class="text-center" >{{ item.productsName }}</td>
+                <td class="text-center">{{ item.sales_products }}</td>
+                <td class="text-center">{{ item.created_at | date:'dd-MM-yyyy' }}</td>
+
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>
+<div class="text-center">
+  <pagination-controls (pageChange)="page = $event"
+  previousLabel="Previous"
+  nextLabel="Next"
+
+  ></pagination-controls>
+</div>
